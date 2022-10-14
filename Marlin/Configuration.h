@@ -37,7 +37,7 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF Imp v2022.09.15"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212 Imp v2022.10.14"
 
 /**IMP-Begin JG changes
 #define TFT_LITTLE_VGL_UI
