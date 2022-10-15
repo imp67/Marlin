@@ -37,7 +37,7 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF Imp v2022.10.15"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Std BiquH2 M21xBF Imp v2022.10.15"
 
 /**IMP-Begin JG changes
 #define TFT_LITTLE_VGL_UI
@@ -82,7 +82,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(IMP, ADPro-BIQU-UART-BLT)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(IMP, ADStd-BIQU-UART-BLT)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -163,7 +163,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Artist-D Pro Imp M21xBF"
+#define CUSTOM_MACHINE_NAME "Artist-D Std Imp M21xBF"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -186,10 +186,10 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2209 //**IMP-UART
-#define Y_DRIVER_TYPE  TMC2209 //**IMP-UART
-#define Z_DRIVER_TYPE  TMC2209 //**IMP-UART
-#define X2_DRIVER_TYPE TMC2209 //**IMP-UART
+#define X_DRIVER_TYPE  TMC2208_STANDALONE //**IMP-UART
+#define Y_DRIVER_TYPE  TMC2208_STANDALONE //**IMP-UART
+#define Z_DRIVER_TYPE  TMC2208_STANDALONE //**IMP-UART
+#define X2_DRIVER_TYPE TMC2208_STANDALONE //**IMP-UART
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
@@ -200,8 +200,8 @@
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2209 //**IMP-UART
-#define E1_DRIVER_TYPE TMC2209 //**IMP-UART
+#define E0_DRIVER_TYPE A4988 //**IMP-UART
+#define E1_DRIVER_TYPE A4988 //**IMP-UART
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -2779,7 +2779,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER //**IMP-AD Std
 
 //
 // K.3D Full Graphic Smart Controller
@@ -3098,7 +3098,7 @@
 // 480x320, 3.5", FSMC Display From MKS
 // Usually paired with MKS Robin Nano V1.2
 //
-#define MKS_ROBIN_TFT35 //**IMP-Display settings
+//#define MKS_ROBIN_TFT35 //**IMP-Display settings AD-Pro
 
 //
 // 480x272, 4.3", FSMC Display From MKS
@@ -3176,7 +3176,7 @@
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-#define TFT_COLOR_UI //**IMP-touchscreen
+//#define TFT_COLOR_UI //**IMP-touchscreen
 //#define TFT_LVGL_UI //**IMP-touchscreen
 
 #if ENABLED(TFT_LVGL_UI)
@@ -3191,7 +3191,7 @@
  *   TFT_ROTATE_270, TFT_ROTATE_270_MIRROR_X, TFT_ROTATE_270_MIRROR_Y,
  *   TFT_MIRROR_X, TFT_MIRROR_Y, TFT_NO_ROTATION
  */
-#define TFT_ROTATION TFT_NO_ROTATION //**IMP-Touchscreen
+//#define TFT_ROTATION TFT_NO_ROTATION //**IMP-Touchscreen
 
 //=============================================================================
 //============================  Other Controllers  ============================
@@ -3209,7 +3209,7 @@
 //
 // Touch Screen Settings
 //
-#define TOUCH_SCREEN
+//#define TOUCH_SCREEN
 #if ENABLED(TOUCH_SCREEN)
   #define BUTTON_DELAY_EDIT  75 // (ms) Button repeat delay for edit screens
   #define BUTTON_DELAY_MENU 100 // (ms) Button repeat delay for menus
