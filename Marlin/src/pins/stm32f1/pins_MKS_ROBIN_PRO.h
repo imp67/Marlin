@@ -104,6 +104,7 @@
 #ifndef E2_CS_PIN
   #define E2_CS_PIN                         PG9
 #endif
+
 //
 // Software SPI pins for TMC2130 stepper drivers
 //
@@ -150,6 +151,7 @@
 
   #define E2_SERIAL_TX_PIN                  PC13
   #define E2_SERIAL_RX_PIN                  PG9
+  #define TMC_BAUD_RATE                   19200 //**IMP-UART
 #endif
 
 //
@@ -186,10 +188,11 @@
 //
 #if ENABLED(MKS_PWC)
   #if ENABLED(TFT_LVGL_UI)
-  #undef MKS_PSU //**IMP-Test EEPROM
-//    #if ENABLED(PSU_CONTROL)
+    #undef MKS_PSU //**IMP-EEPROM
+    #if ENABLED(PSU_CONTROL)
 //      #error "PSU_CONTROL is incompatible with MKS_PWC plus TFT_LVGL_UI."
-//    #endif
+        #undef PSU_CONTROL) //**IMP-EEPROM
+    #endif
     #undef MKS_PWC
     #define SUICIDE_PIN                     PG11
     #define SUICIDE_PIN_STATE               LOW
