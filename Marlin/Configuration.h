@@ -37,7 +37,7 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M212LR Imp v2022.10.08"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M212LR Imp v2022.10.25"
 
 /**IMP-Begin JG changes
 #define TFT_LITTLE_VGL_UI
@@ -120,7 +120,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 3
+#define SERIAL_PORT 1
 
 /**
  * Serial Port Baud Rate
@@ -133,7 +133,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 //#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
 /**
@@ -148,7 +148,7 @@
 //MKS SGEN AUX-1 Use UART0(P0.2-TXD0,P0.3-RXD0)     #define SERIAL_PORT_2 0
 //MKS SGEN_L AUX-1 Use UART0(P0.2-TXD0,P0.3-RXD0)     #define SERIAL_PORT_2 0
 //MKS Robin Nano USB Use UART3(PB10-TX,PB11-RX)     #define SERIAL_PORT_2 3
-#define SERIAL_PORT_2 1
+#define SERIAL_PORT_2 3
 //#define BAUDRATE_2 250000   // Enable to override BAUDRATE
 
 /**
@@ -2593,8 +2593,8 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
-//#define INDIVIDUAL_AXIS_HOMING_SUBMENU
+#define INDIVIDUAL_AXIS_HOMING_MENU    //**IMP-Add individual homing menus
+#define INDIVIDUAL_AXIS_HOMING_SUBMENU //**IMP-Add individual homing menus
 
 //
 // SPEAKER/BUZZER
