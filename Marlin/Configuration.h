@@ -37,7 +37,7 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF Imp v2022.10.15"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF Imp v2022.10.27"
 
 /**IMP-Begin JG changes
 #define TFT_LITTLE_VGL_UI
@@ -82,7 +82,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(IMP, ADPro-BIQU-UART-BLT)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(IMP, ADPro-BIQU-UART-BLTzmin)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -163,7 +163,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Artist-D Pro Imp M21xBF"
+#define CUSTOM_MACHINE_NAME "A-D Pro Imp M21xBF Vt Town"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1133,7 +1133,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop. **IMP- BLTouch on Z-Min pin
 #define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
@@ -1305,7 +1305,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //**IMP-BLTouch
+#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //**IMP-BLTouch
 
 // Force the use of the probe for Z-axis homing
 #define USE_PROBE_FOR_Z_HOMING //**IMP-BLTouch
@@ -1325,7 +1325,8 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PC4 // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
+//#define Z_MIN_PROBE_PIN PC4 // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
+#define Z_MIN_PROBE_PIN PA11 // Pin 32 is the RAMPS default **IMP-BLTouch Try manual define  Z_MIN pin for BLTouch
 
 /**
  * Probe Type
