@@ -37,13 +37,13 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212LR Imp v2022.10.31"
-/**IMP-Build information *
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212 Imp v2022.10.31"
+/**IMP-Build information *Halloween Release*
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
 Date:       2022-10-31
 Extruders:  Biqu H2
-UART:       TMC_2209
+UART:       TMC2209
 ABL:        BLTouch Zmin
 Details:    
 */ 
@@ -172,7 +172,7 @@ Details:
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "AD-Pro Imp M212LR UART BLTz-"
+#define CUSTOM_MACHINE_NAME "AD-Pro Imp M212 UART BLTz-"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1693,10 +1693,10 @@ Details:
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false //**IMP-H2 change to false (Vt_Town build)
-#define INVERT_E1_DIR false
-//#define INVERT_E0_DIR true //**IMP-H2 change to true
-//#define INVERT_E1_DIR true
+//#define INVERT_E0_DIR false  //**IMP-H2 change to false (Vt_Town build - Depends on stepper wiring)
+//#define INVERT_E1_DIR false  //**IMP-H2 change to false (Vt_Town build - Depends on stepper wiring)
+#define INVERT_E0_DIR true     //**IMP-H2 change to true
+#define INVERT_E1_DIR true     //**IMP-H2 change to true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
