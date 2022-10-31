@@ -150,7 +150,8 @@
 
   #define E2_SERIAL_TX_PIN                  PC13
   #define E2_SERIAL_RX_PIN                  PG9
-#endif
+  #define TMC_BAUD_RATE                   19200 //**IMP-UART
+  #endif
 
 //
 // Temperature Sensors
@@ -181,7 +182,6 @@
 #define FIL_RUNOUT2_PIN                     PE6   // MT_DET2
 #define FIL_RUNOUT3_PIN                     PG14  // MT_DET3
 #define BEEPER_PIN                          PC5
-
 //
 // Power Supply Control
 //

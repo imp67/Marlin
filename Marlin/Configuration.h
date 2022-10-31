@@ -37,7 +37,16 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M212LR Imp v2022.10.25"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M212 Imp v2022.10.31"
+/**IMP-Build information *Halloween Release*
+AUthor:     Imp67  
+Marlin:     2.1.2 Release
+Date:       2022-10-31
+Extruders:  JGMaker
+UART:       TMC2209_STANDALONE
+ABL:        NIL
+Details:    
+*/ 
 
 /**IMP-Begin JG changes
 #define TFT_LITTLE_VGL_UI
@@ -163,7 +172,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Artist-D Pro Imp M2.1.2"
+#define CUSTOM_MACHINE_NAME "AD-Pro JG Imp M212"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -417,12 +426,12 @@
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
-//#define HOTEND_OFFSET_X { 0.0, 367.200 } // (mm) relative X-offset for each nozzle  **IMP-BIQUH2 offsets
+//#define HOTEND_OFFSET_X { 0.0, 367.200 } // (mm) relative X-offset for each nozzle **IMP-BIQUH2 offsets
 //#define HOTEND_OFFSET_Y { 0.0, -0.100 }  // (mm) relative Y-offset for each nozzle **IMP-BIQUH2 offsets
-//#define HOTEND_OFFSET_Z { 0.0, 0.000 }  // (mm) relative Z-offset for each nozzle **IMP-BIQUH2 offsets
-//#define HOTEND_OFFSET_X { 0.0, 373.2 } // (mm) relative X-offset for each nozzle **IMP-standard offsets
-#define HOTEND_OFFSET_Y { 0.0, -0.02 }  // (mm) relative Y-offset for each nozzle **IMP-standard offsets
-#define HOTEND_OFFSET_Z { 0.0, 0.1 }  // (mm) relative Z-offset for each nozzle **IMP-standard offsets
+//#define HOTEND_OFFSET_Z { 0.0, 0.000 }  // (mm) relative Z-offset for each nozzle  **IMP-BIQUH2 offsets
+//#define HOTEND_OFFSET_X { 0.0, 373.2 } // (mm) relative X-offset for each nozzle   **IMP-standard offsets
+#define HOTEND_OFFSET_Y { 0.0, -0.02 }  // (mm) relative Y-offset for each nozzle    **IMP-standard offsets
+#define HOTEND_OFFSET_Z { 0.0, 0.1 }  // (mm) relative Z-offset for each nozzle      **IMP-standard offsets
 
 // @section psu control
 
@@ -763,7 +772,7 @@
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  * @section bed temp
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED //**IMP-PID Bed
 
 //#define BED_LIMIT_SWITCHING
 
@@ -1210,6 +1219,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
+//#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 50 } //**IMP-H2
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1329,7 +1339,7 @@
  *      - normally-open switches to 5V and D32.
  */
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch Pin PC4
-
+//#define Z_MIN_PROBE_PIN PA11 // Pin 32 is the RAMPS default **IMP-BLTouch Try manual define  Z_MIN pin for BLTouch
 /**
  * Probe Type
  *
@@ -1365,18 +1375,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH // **IMP-BLTouch
-
-/**
- * MagLev V4 probe by MDD
- *
- * This probe is deployed and activated by powering a built-in electromagnet.
- */
-//#define MAGLEV4
-#if ENABLED(MAGLEV4)
-  //#define MAGLEV_TRIGGER_PIN 11     // Set to the connected digital output
-  #define MAGLEV_TRIGGER_DELAY 15     // Changing this risks overheating the coil
-#endif
+//#define BLTOUCH //**IMP-BLTouch
 
 /**
  * MagLev V4 probe by MDD
@@ -2238,7 +2237,7 @@
 // every couple of seconds when it can't accept commands.
 //
 #define HOST_KEEPALIVE_FEATURE        // Disable this if your host doesn't like keepalive messages
-#define DEFAULT_KEEPALIVE_INTERVAL 2  // Number of seconds between "busy" messages. Set with M113.
+#define DEFAULT_KEEPALIVE_INTERVAL 4  // Number of seconds between "busy" messages. Set with M113.
 #define BUSY_WHILE_HEATING            // Some hosts require "busy" messages even during heating
 
 // @section units
@@ -2264,15 +2263,15 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "PETG"
-#define PREHEAT_2_TEMP_HOTEND 230
-#define PREHEAT_2_TEMP_BED    60
+#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_TEMP_HOTEND 240
+#define PREHEAT_2_TEMP_BED    100
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_3_LABEL       "ABS"
-#define PREHEAT_3_TEMP_HOTEND 240
-#define PREHEAT_3_TEMP_BED    100
+#define PREHEAT_3_LABEL       "PETG"
+#define PREHEAT_3_TEMP_HOTEND 230
+#define PREHEAT_3_TEMP_BED     60
 #define PREHEAT_3_TEMP_CHAMBER 35
 #define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
 
@@ -3180,7 +3179,7 @@
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-#define TFT_COLOR_UI //**IMP-touchscreen
+#define TFT_COLOR_UI  //**IMP-touchscreen
 //#define TFT_LVGL_UI //**IMP-touchscreen
 
 #if ENABLED(TFT_LVGL_UI)
