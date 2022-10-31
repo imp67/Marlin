@@ -38,12 +38,12 @@
 #define CONFIGURATION_H_VERSION 02010200
 
 #define ARTIST_D_PRO_VERSION "Version:Artist-D Std BiquH2 M212 Imp v2022.10.31"
-/**IMP-Build information *
+/**IMP-Build information *Halloween Release*
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
 Date:       2022-10-31
 Extruders:  Biqu H2
-UART:       Nil
+UART:       TMC2208_STANDALONE
 ABL:        BLTouch Zmax
 Details:    
 */ 
@@ -1694,7 +1694,7 @@ Details:
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 #define INVERT_E0_DIR true //**IMP-H2 change to true
-#define INVERT_E1_DIR true
+#define INVERT_E1_DIR true //**IMP-H2 change to true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
