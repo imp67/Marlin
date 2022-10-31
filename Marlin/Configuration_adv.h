@@ -1019,7 +1019,7 @@
 //
 // Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
 //
-#define ASSISTED_TRAMMING //**IMP--BLTouch
+#define ASSISTED_TRAMMING //**IMP-BLTouch
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
@@ -2121,6 +2121,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
+  #define PROBING_MARGIN_LEFT  10  //**IMP-BLTouch
+  #define PROBING_MARGIN_RIGHT 45  //**IMP-BLTouch
+  #define PROBING_MARGIN_FRONT 30  //**IMP-BLTouch
+  #define PROBING_MARGIN_BACK  10  //**IMP-BLTouch
   //#define PROBING_MARGIN_LEFT PROBING_MARGIN
   //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
   //#define PROBING_MARGIN_FRONT PROBING_MARGIN

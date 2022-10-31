@@ -37,11 +37,11 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212LR Imp v2022.10.29"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212LR Imp v2022.10.31"
 /**IMP-Build information *
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
-Date:       2022-10-29
+Date:       2022-10-31
 Extruders:  Biqu H2
 UART:       TMC_2209
 ABL:        BLTouch Zmax
@@ -769,7 +769,7 @@ Details:
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  * @section bed temp
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED //**IMP-PID Bed
 
 //#define BED_LIMIT_SWITCHING
 
@@ -1333,8 +1333,8 @@ Details:
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PC4 // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
-
+#define Z_MIN_PROBE_PIN PC4    // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
+//#define Z_MIN_PROBE_PIN PA11 // Pin 32 is the RAMPS default **IMP-BLTouch Try manual define  Z_MIN pin for BLTouch
 /**
  * Probe Type
  *
@@ -1371,17 +1371,6 @@ Details:
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
 #define BLTOUCH //**IMP-BLTouch
-
-/**
- * MagLev V4 probe by MDD
- *
- * This probe is deployed and activated by powering a built-in electromagnet.
- */
-//#define MAGLEV4
-#if ENABLED(MAGLEV4)
-  //#define MAGLEV_TRIGGER_PIN 11     // Set to the connected digital output
-  #define MAGLEV_TRIGGER_DELAY 15     // Changing this risks overheating the coil
-#endif
 
 /**
  * MagLev V4 probe by MDD
@@ -1538,7 +1527,7 @@ Details:
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 50 //**IMP-BLTouch BiquH2
+#define PROBING_MARGIN 45 //**IMP-BLTouch BiquH2
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1924,7 +1913,7 @@ Details:
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR // **IMP-BLTouch
+#define AUTO_BED_LEVELING_BILINEAR //**IMP-BLTouch
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -2010,8 +1999,7 @@ Details:
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
-
+    #define EXTRAPOLATE_BEYOND_GRID //**IMP-BLTouch
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
     // Synthesizes intermediate points to produce a more detailed mesh.
@@ -2073,7 +2061,7 @@ Details:
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LCD_BED_TRAMMING
+//#define LCD_BED_TRAMMING //**IMP-BLTouch
 
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
