@@ -45,7 +45,7 @@ Date:       2022-10-29
 Extruders:  Biqu H2
 UART:       TMC_2209
 ABL:        BLTouch Zmin
-Details:    
+Details:    INVERT_E0_DIR INVERT_E1_DIR changed to false for Vt Town
 */ 
 
 /**IMP-Begin JG changes
@@ -1706,8 +1706,8 @@ Details:
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true //**IMP-H2 change to true
-#define INVERT_E1_DIR true
+#define INVERT_E0_DIR false //**IMP-H2 change to true - Changed to false for Vt Town
+#define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -3186,7 +3186,7 @@ Details:
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-#define TFT_COLOR_UI  //**IMP-touchscreen
+#define TFT_COLOR_UI //**IMP-touchscreen
 //#define TFT_LVGL_UI //**IMP-touchscreen
 
 #if ENABLED(TFT_LVGL_UI)
