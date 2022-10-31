@@ -38,12 +38,12 @@
 #define CONFIGURATION_H_VERSION 02010200
 
 #define ARTIST_D_PRO_VERSION "Version:Artist-D Std JG M212 Imp v2022.10.31"
-/**IMP-Build information *
+/**IMP-Build information *Halloween Release*
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
 Date:       2022-10-31
 Extruders:  JGMaker
-UART:       NIL
+UART:       TMC2208_STANDALONE
 ABL:        NIL
 Details:    
 */ 
