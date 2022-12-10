@@ -104,6 +104,15 @@
 #ifndef E2_CS_PIN
   #define E2_CS_PIN                         PG9
 #endif
+
+//**IMP-Stop compile warning (from Twinkie)
+#define X2_ENABLE_PIN                        E2_ENABLE_PIN
+#define X2_STEP_PIN                          E2_STEP_PIN
+#define X2_DIR_PIN                           E2_DIR_PIN
+#ifndef X2_CS_PIN
+  #define X2_CS_PIN                          E2_CS_PIN
+#endif
+
 //
 // Software SPI pins for TMC2130 stepper drivers
 //
@@ -150,6 +159,7 @@
 
   #define E2_SERIAL_TX_PIN                  PC13
   #define E2_SERIAL_RX_PIN                  PG9
+  #define TMC_BAUD_RATE                   19200 //**IMP-UART
 #endif
 
 //
@@ -176,23 +186,25 @@
 //#define TEMP_0_CS_PIN                     PF11  // TC2 - CS2
 
 #define POWER_LOSS_PIN                      PA2   // PW_DET
+#define PS_ON_PIN                           PG11  // PW_OFF **IMP-PS_ON needed for PSU_CONTROL without MKS_PSU
 #define FIL_RUNOUT_PIN                      PA4   // MT_DET1
 #define FIL_RUNOUT2_PIN                     PE6   // MT_DET2
 #define FIL_RUNOUT3_PIN                     PG14  // MT_DET3
-
+#define BEEPER_PIN                          PC5
 //
 // Power Supply Control
 //
 #if ENABLED(MKS_PWC)
   #if ENABLED(TFT_LVGL_UI)
-    #if ENABLED(PSU_CONTROL)
-      #error "PSU_CONTROL is incompatible with MKS_PWC plus TFT_LVGL_UI."
-    #endif
+    #undef MKS_PSU //**IMP-Test EEPROM
+//    #if ENABLED(PSU_CONTROL)
+//      #error "PSU_CONTROL is incompatible with MKS_PWC plus TFT_LVGL_UI."
+//    #endif
     #undef MKS_PWC
     #define SUICIDE_PIN                     PG11
     #define SUICIDE_PIN_STATE               LOW
-  #else
-    #define PS_ON_PIN                       PG11  // PW_OFF
+//  #else
+//    #define PS_ON_PIN                       PG11  // PW_OFF **IMP-PS_ON needed for PSU_CONTROL without MKS_PSU
   #endif
   #define KILL_PIN                          PA2
   #define KILL_PIN_STATE                    HIGH
@@ -315,4 +327,16 @@
   #define SPI_FLASH_MOSI_PIN                PB15
   #define SPI_FLASH_MISO_PIN                PB14
   #define SPI_FLASH_SCK_PIN                 PB13
+
+  //**Imp-SPI EEPROM test (from Twinkie)
+  //#define W25QXX_CS_PIN                  PB12  // Flash chip-select
+  //#define W25QXX_MOSI_PIN                PB15
+  //#define W25QXX_MISO_PIN                PB14
+  //#define W25QXX_SCK_PIN                 PB13
 #endif
+
+//**Imp-SPI EEPROM test (from Twinkie)
+//#define SPI_EEPROM
+//#define SPI_CHAN_EEPROM1                        2
+//#define SPI_EEPROM1_CS_PIN                          PB12 
+//#define MARLIN_EEPROM_SIZE 						0x1000000  // 16MB
