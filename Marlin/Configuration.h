@@ -37,13 +37,13 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF UART BLTzmax Imp v2022.10.29"
-/**IMP-Build information *
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF UART BLTzmax Imp v2022.12.11"
+/**IMP-Build information *Rememberance Day Release*
 AUthor:     Imp67  
 Marlin:     2.1.x BugFix
-Date:       2022-10-29
+Date:       2022-12-11
 Extruders:  Biqu H2
-UART:       TMC_2209
+UART:       TMC2209
 ABL:        BLTouch Zmax
 Details:    
 */ 
@@ -699,10 +699,16 @@ Details:
     //#define DEFAULT_Kp_LIST {  22.20,  22.20 } //**IMP-H2 - Original values
     //#define DEFAULT_Ki_LIST {   1.08,   1.08 } //**IMP-H2 - Original values
     //#define DEFAULT_Kd_LIST { 114.00, 114.00 } //**IMP-H2 - Original values
-    #define DEFAULT_Kp_LIST { 10.03, 13.99 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
-    #define DEFAULT_Ki_LIST {  0.45,  0.79 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
-    #define DEFAULT_Kd_LIST { 55.97, 61.55 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
-  #else
+    //#define DEFAULT_Kp_LIST { 10.03, 13.99 }   //**IMP-H2 - Old PID Tune values 210 deg C PLA
+    //#define DEFAULT_Ki_LIST {  0.45,  0.79 }   //**IMP-H2 - Old PID Tune values 210 deg C PLA
+    //#define DEFAULT_Kd_LIST { 55.97, 61.55 }   //**IMP-H2 - Old PID Tune values 210 deg C PLA
+    //#define DEFAULT_Kp_LIST { 12.65, 10.35 }   //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-06
+    //#define DEFAULT_Ki_LIST {  0.62,  0.54 }   //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-06
+    //#define DEFAULT_Kd_LIST { 64.76, 49.28 }   //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-06
+    #define DEFAULT_Kp_LIST { 08.12, 14.05 }     //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-12
+    #define DEFAULT_Ki_LIST {  0.34,  0.85 }     //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-12
+    #define DEFAULT_Kd_LIST { 47.92, 58.15 }     //**IMP-H2 - New PID Tune values 210 deg C PLA 2022-11-12
+   #else
     #define DEFAULT_Kp  22.20
     #define DEFAULT_Ki   1.08
     #define DEFAULT_Kd 114.00
@@ -770,7 +776,7 @@ Details:
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  * @section bed temp
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED //**IMP-PID Bed
 
 //#define BED_LIMIT_SWITCHING
 
@@ -788,9 +794,12 @@ Details:
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  //#define DEFAULT_bedKp 10.00  //**IMP-PID-TEMPBED Marlin Default
+  //#define DEFAULT_bedKi .023   //**IMP-PID-TEMPBED Marlin Default
+  //#define DEFAULT_bedKd 305.4  //**IMP-PID-TEMPBED Marlin Default
+  #define DEFAULT_bedKp 127.01   //**IMP-PID-TEMPBED PID Tune 60deg C 2022-11-12
+  #define DEFAULT_bedKi 24.81    //**IMP-PID-TEMPBED PID Tune 60deg C 2022-11-12
+  #define DEFAULT_bedKd 433.53   //**IMP-PID-TEMPBED PID Tune 60deg C 2022-11-12
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1206,8 +1215,9 @@ Details:
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 932.00, 932.00 } //**IMP-H2 Add E1 setting for DISTINCT_E_FACTORS Biqu H2
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35, 97.35 } //**IMP-Add E1 setting for DISTINCT_E_FACTORS JG 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.76, 81.05, 397.61, 932.00, 932.00 } //**IMP-H2 Add E1 setting for DISTINCT_E_FACTORS Biqu H2 TUNED
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 932.00, 932.00 }        //**IMP-H2 Add E1 setting for DISTINCT_E_FACTORS Biqu H2 DEFAULT
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35, 97.35 }          //**IMP-Add E1 setting for DISTINCT_E_FACTORS JG 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35 }
 
 /**
@@ -1215,7 +1225,7 @@ Details:
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 50 } //**IMP-H2
+#define DEFAULT_MAX_FEEDRATE          { 800, 800, 5, 50 } //**IMP-H2
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1243,9 +1253,9 @@ Details:
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves        **IMP-Acceleration Tune (500 default)
 #define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   800    // X, Y, Z acceleration for travel (non printing) moves **IMP-Acceleration Tune (500 default)
 
 /**
  * Default Jerk limits (mm/s)
@@ -1334,8 +1344,8 @@ Details:
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PC4 // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
-
+#define Z_MIN_PROBE_PIN PC4    // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch
+//#define Z_MIN_PROBE_PIN PA11 // Pin 32 is the RAMPS default **IMP-BLTouch Manual define Z_MIN pin for BLTouch
 /**
  * Probe Type
  *
@@ -1534,12 +1544,13 @@ Details:
  *     |    [-]    |
  *     O-- FRONT --+
  */
-//#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 } // **IMP-BLTouch JG
-#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -1.400 } // **IMP-BLTouch Biqu H2
+//#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 }  // **IMP-BLTouch JG
+//#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -1.400 } // **IMP-BLTouch Biqu H2 OLD
+#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -2.300 }   // **IMP-BLTouch Biqu H2 2022-11-06
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 50 //**IMP-BLTouch BiquH2
+#define PROBING_MARGIN 45 //**IMP-BLTouch BiquH2
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1705,8 +1716,10 @@ Details:
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true //**IMP-H2 change to true
-#define INVERT_E1_DIR true
+//#define INVERT_E0_DIR false  //**IMP-H2 change to false (Depends on stepper wiring)
+//#define INVERT_E1_DIR false  //**IMP-H2 change to false (Depends on stepper wiring)
+#define INVERT_E0_DIR true     //**IMP-H2 change to true
+#define INVERT_E1_DIR true     //**IMP-H2 change to true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1826,7 +1839,7 @@ Details:
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
-  #define NUM_RUNOUT_SENSORS   2          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+  #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
   #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
@@ -1925,7 +1938,7 @@ Details:
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR // **IMP-BLTouch
+#define AUTO_BED_LEVELING_BILINEAR //**IMP-BLTouch
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1960,7 +1973,7 @@ Details:
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-#define DEBUG_LEVELING_FEATURE //**IMP-Debug info
+//#define DEBUG_LEVELING_FEATURE //**IMP-Debug info
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
@@ -2011,8 +2024,7 @@ Details:
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
-
+    #define EXTRAPOLATE_BEYOND_GRID //**IMP-BLTouch
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
     // Synthesizes intermediate points to produce a more detailed mesh.
@@ -2074,14 +2086,14 @@ Details:
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LCD_BED_TRAMMING
+#define LCD_BED_TRAMMING //**IMP-BLTouch
 
 #if ENABLED(LCD_BED_TRAMMING)
-  #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
-  //#define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
-  //#define BED_TRAMMING_USE_PROBE
+  #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
+  #define BED_TRAMMING_USE_PROBE
   #if ENABLED(BED_TRAMMING_USE_PROBE)
     #define BED_TRAMMING_PROBE_TOLERANCE 0.1  // (mm)
     #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
@@ -2229,8 +2241,9 @@ Details:
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
-   #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors. //**IMP-UART
-  //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
+  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.     **IMP-EEPROM
+  #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build. **IMP-EEPROM
+  //#define DEBUG_EEPROM_READWRITE //**IMP-EEPROM
 #endif
 
 // @section host
@@ -2345,17 +2358,17 @@ Details:
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
-  #define NOZZLE_CLEAN_STROKES  12
+   #define NOZZLE_CLEAN_STROKES  6
 
   // Default number of triangles
   #define NOZZLE_CLEAN_TRIANGLES  3
 
   // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
   // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  //#define NOZZLE_CLEAN_END_POINT   { { 100, 60, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } }  //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  #define NOZZLE_CLEAN_START_POINT { { -52.5, 30, (Z_MIN_POS + 1) }, { 369, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
+  #define NOZZLE_CLEAN_END_POINT   { { -42.5, 60, (Z_MIN_POS + 1) }, { 359, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
 
   // Circular pattern radius
   #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
@@ -2368,10 +2381,10 @@ Details:
   #define NOZZLE_CLEAN_GOBACK
 
   // For a purge/clean station that's always at the gantry height (thus no Z move)
-  //#define NOZZLE_CLEAN_NO_Z
+  #define NOZZLE_CLEAN_NO_Z //**IMP-Artist-D purge buckets
 
   // For a purge/clean station mounted on the X axis
-  //#define NOZZLE_CLEAN_NO_Y
+  #define NOZZLE_CLEAN_NO_Y  //**IMP-Artist-D purge buckets
 
   // Require a minimum hotend temperature for cleaning
   #define NOZZLE_CLEAN_MIN_TEMP 170

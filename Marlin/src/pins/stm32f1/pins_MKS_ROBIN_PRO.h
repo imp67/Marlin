@@ -104,6 +104,15 @@
 #ifndef E2_CS_PIN
   #define E2_CS_PIN                         PG9
 #endif
+
+//**IMP-Stop compile warning (from Twinkie)
+#define X2_ENABLE_PIN                        E2_ENABLE_PIN
+#define X2_STEP_PIN                          E2_STEP_PIN
+#define X2_DIR_PIN                           E2_DIR_PIN
+#ifndef X2_CS_PIN
+  #define X2_CS_PIN                          E2_CS_PIN
+#endif
+
 //
 // Software SPI pins for TMC2130 stepper drivers
 //
@@ -150,6 +159,7 @@
 
   #define E2_SERIAL_TX_PIN                  PC13
   #define E2_SERIAL_RX_PIN                  PG9
+  #define TMC_BAUD_RATE                   19200 //**IMP-UART
 #endif
 
 //
@@ -180,13 +190,13 @@
 #define FIL_RUNOUT_PIN                      PA4   // MT_DET1
 #define FIL_RUNOUT2_PIN                     PE6   // MT_DET2
 #define FIL_RUNOUT3_PIN                     PG14  // MT_DET3
-
+#define BEEPER_PIN                          PC5
 //
 // Power Supply Control
 //
 #if ENABLED(MKS_PWC)
   #if ENABLED(TFT_LVGL_UI)
-  #undef MKS_PSU //**IMP-Test EEPROM
+  #undef MKS_PSU //**IMP-EEPROM
 //    #if ENABLED(PSU_CONTROL)
 //      #error "PSU_CONTROL is incompatible with MKS_PWC plus TFT_LVGL_UI."
 //    #endif
