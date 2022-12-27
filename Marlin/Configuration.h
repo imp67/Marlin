@@ -37,11 +37,11 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Std JG M212 Imp v2022.12.11"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Std JG M211 Imp v2022.12.27"
 /**IMP-Build information *Halloween Release*
 AUthor:     Imp67  
-Marlin:     2.1.2 Release
-Date:       2022-12-11
+Marlin:     2.1.1 Release
+Date:       2022-12-27
 Extruders:  JGMaker
 UART:       TMC2208_STANDALONE
 ABL:        BLTouch Zmax
@@ -172,7 +172,7 @@ Details:
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "AD-Std JG Imp M212 BLTz+"
+#define CUSTOM_MACHINE_NAME "AD-Std JG Imp M211 BLTz+"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1083,7 +1083,7 @@ Details:
 //#define USE_WMIN_PLUG
 #define USE_XMAX_PLUG
 #define USE_YMAX_PLUG
-//#define USE_ZMAX_PLUG
+#define USE_ZMAX_PLUG //**IMP-BLT Z-max
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
 //#define USE_KMAX_PLUG
@@ -1165,7 +1165,7 @@ Details:
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-#define ENDSTOP_INTERRUPTS_FEATURE
+//#define ENDSTOP_INTERRUPTS_FEATURE //**IMP-BLT Try disable interupts for AD Std BLTouch
 
 /**
  * Endstop Noise Threshold
@@ -1338,7 +1338,7 @@ Details:
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PC4  // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch Pin PC4
+#define Z_MIN_PROBE_PIN PC4    // Pin 32 is the RAMPS default **IMP-BLTouch Use Z_MAX for BLTouch Pin PC4
 //#define Z_MIN_PROBE_PIN PA11 // Pin 32 is the RAMPS default **IMP-BLTouch Try manual define  Z_MIN pin for BLTouch
 /**
  * Probe Type
@@ -2068,7 +2068,7 @@ Details:
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#define LCD_BED_TRAMMING
+#define LCD_BED_TRAMMING //**IMP-BLTouch
 
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
@@ -2339,17 +2339,17 @@ Details:
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
-  #define NOZZLE_CLEAN_STROKES  12
+  #define NOZZLE_CLEAN_STROKES  6
 
   // Default number of triangles
   #define NOZZLE_CLEAN_TRIANGLES  3
 
   // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
   // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  //#define NOZZLE_CLEAN_END_POINT   { { 100, 60, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } }  //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  #define NOZZLE_CLEAN_START_POINT { { -52.5, 30, (Z_MIN_POS + 1) }, { 369, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
+  #define NOZZLE_CLEAN_END_POINT   { { -42.5, 60, (Z_MIN_POS + 1) }, { 359, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
 
   // Circular pattern radius
   #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
@@ -2362,10 +2362,10 @@ Details:
   #define NOZZLE_CLEAN_GOBACK
 
   // For a purge/clean station that's always at the gantry height (thus no Z move)
-  //#define NOZZLE_CLEAN_NO_Z
+  #define NOZZLE_CLEAN_NO_Z //**IMP-Artist-D purge buckets
 
   // For a purge/clean station mounted on the X axis
-  //#define NOZZLE_CLEAN_NO_Y
+  #define NOZZLE_CLEAN_NO_Y  //**IMP-Artist-D purge buckets
 
   // Require a minimum hotend temperature for cleaning
   #define NOZZLE_CLEAN_MIN_TEMP 170
