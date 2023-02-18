@@ -37,12 +37,12 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212LR Imp v2022.10.31"
-/**IMP-Build information *Halloween Release*
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M211LR Imp v2023.02.18"
+/**IMP-Build information *Updated Halloween Release*
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
-Date:       2022-10-31
-Extruders:  Biqu H2
+Date:       2023-02-18
+Extruders:  JGMaker
 UART:       TMC2209_STANDALONE
 ABL:        BLTouch Zmax
 Details:    
@@ -91,7 +91,7 @@ Details:
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(IMP, ADPro-BIQU-noUART-BLTzmax)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(IMP, ADPro-JG-noUART-BLTzmax)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -172,7 +172,7 @@ Details:
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "AD-Pro Imp M212 BLTz+"
+#define CUSTOM_MACHINE_NAME "AD-Pro JG Imp M211 BLTz+"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -195,10 +195,10 @@ Details:
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART
-#define Y_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART
-#define Z_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART
-#define X2_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART
+#define X_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
+#define Y_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
+#define Z_DRIVER_TYPE  TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
+#define X2_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
@@ -209,8 +209,8 @@ Details:
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART
-#define E1_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART
+#define E0_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
+#define E1_DRIVER_TYPE TMC2209_STANDALONE //**IMP-UART 2209 NON-UART (standard)
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -426,9 +426,12 @@ Details:
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
-//#define HOTEND_OFFSET_X { 0.0, 367.200 } // (mm) relative X-offset for each nozzle
-#define HOTEND_OFFSET_Y { 0.0, -0.100 }  // (mm) relative Y-offset for each nozzle
-#define HOTEND_OFFSET_Z { 0.0, 0.000 }  // (mm) relative Z-offset for each nozzle
+//#define HOTEND_OFFSET_X { 0.0, 367.200 } // (mm) relative X-offset for each nozzle **IMP-BIQUH2 offsets
+//#define HOTEND_OFFSET_Y { 0.0, -0.100 }  // (mm) relative Y-offset for each nozzle **IMP-BIQUH2 offsets
+//#define HOTEND_OFFSET_Z { 0.0, 0.000 }  // (mm) relative Z-offset for each nozzle  **IMP-BIQUH2 offsets
+//#define HOTEND_OFFSET_X { 0.0, 373.2 } // (mm) relative X-offset for each nozzle   **IMP-standard offsets
+#define HOTEND_OFFSET_Y { 0.0, -0.02 }  // (mm) relative Y-offset for each nozzle    **IMP-standard offsets
+#define HOTEND_OFFSET_Z { 0.0, 0.0 }  // (mm) relative Z-offset for each nozzle      **IMP-standard offsets
 
 // @section psu control
 
@@ -695,12 +698,12 @@ Details:
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    //#define DEFAULT_Kp_LIST {  22.20,  22.20 } //**IMP-H2 - Original values
-    //#define DEFAULT_Ki_LIST {   1.08,   1.08 } //**IMP-H2 - Original values
-    //#define DEFAULT_Kd_LIST { 114.00, 114.00 } //**IMP-H2 - Original values
-    #define DEFAULT_Kp_LIST { 10.03, 13.99 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
-    #define DEFAULT_Ki_LIST {  0.45,  0.79 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
-    #define DEFAULT_Kd_LIST { 55.97, 61.55 }     //**IMP-H2 - New PID Tune values 210 deg C PLA
+    #define DEFAULT_Kp_LIST {  22.20,  22.20 }   //**IMP-H2 - Original values for JG Extruders
+    #define DEFAULT_Ki_LIST {   1.08,   1.08 }   //**IMP-H2 - Original values for JG Extruders
+    #define DEFAULT_Kd_LIST { 114.00, 114.00 }   //**IMP-H2 - Original values for JG Extruders
+    //#define DEFAULT_Kp_LIST { 10.03, 13.99 }   //**IMP-H2 - New PID Tune values 210 deg C PLA
+    //#define DEFAULT_Ki_LIST {  0.45,  0.79 }   //**IMP-H2 - New PID Tune values 210 deg C PLA
+    //#define DEFAULT_Kd_LIST { 55.97, 61.55 }   //**IMP-H2 - New PID Tune values 210 deg C PLA
   #else
     #define DEFAULT_Kp  22.20
     #define DEFAULT_Ki   1.08
@@ -1080,7 +1083,7 @@ Details:
 //#define USE_WMIN_PLUG
 #define USE_XMAX_PLUG
 #define USE_YMAX_PLUG
-//#define USE_ZMAX_PLUG
+#define USE_ZMAX_PLUG //**IMP-BLT Z-max
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
 //#define USE_KMAX_PLUG
@@ -1141,7 +1144,8 @@ Details:
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.    **IMP- No BLTouch on Z-Min pin
+//#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop. **IMP- BLTouch on Z-Min pin
 #define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
@@ -1205,8 +1209,8 @@ Details:
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 932.00, 932.00 } //**IMP-H2 Add E1 setting for DISTINCT_E_FACTORS Biqu H2
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35, 97.35 } //**IMP-Add E1 setting for DISTINCT_E_FACTORS JG 
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 932.00, 932.00 } //**IMP-Add E1 setting for DISTINCT_E_FACTORS Biqu H2
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35, 97.35 } //**IMP-Add E1 setting for DISTINCT_E_FACTORS JG 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.35 }
 
 /**
@@ -1214,7 +1218,8 @@ Details:
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 50 } //**IMP-H2
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
+//#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 50 } //**IMP-H2
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1227,7 +1232,7 @@ Details:
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 5000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1347,7 +1352,7 @@ Details:
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-//#define PROBE_MANUALLY
+//#define PROBE_MANUALLY //**IMP-BLTouch off
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -1522,12 +1527,13 @@ Details:
  *     |    [-]    |
  *     O-- FRONT --+
  */
-//#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 } // **IMP-BLTouch JG
-#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -1.400 } // **IMP-BLTouch Biqu H2
+#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 }    // **IMP-BLTouch JG
+//#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -1.400 } // **IMP-BLTouch Biqu H2
+//#define NOZZLE_TO_PROBE_OFFSET { 0, 8, 0 } // **IMP-BLTouch OFF
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 45 //**IMP-BLTouch BiquH2
+#define PROBING_MARGIN 45 //**IMP-BLTouch JG
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1693,10 +1699,10 @@ Details:
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-//#define INVERT_E0_DIR false  //**IMP-H2 change to false (Depends on stepper wiring)
-//#define INVERT_E1_DIR false  //**IMP-H2 change to false (Depends on stepper wiring)
-#define INVERT_E0_DIR true     //**IMP-H2 change to true
-#define INVERT_E1_DIR true     //**IMP-H2 change to true
+#define INVERT_E0_DIR false    //**IMP-H2 set to false for JG extruder
+#define INVERT_E1_DIR true     //**IMP-H2 set to true for JG extruder
+//#define INVERT_E0_DIR true   //**IMP-H2 change to true (Depends on stepper wiring)
+//#define INVERT_E1_DIR true   //**IMP-H2 change to true (Depends on stepper wiring)
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1816,7 +1822,7 @@ Details:
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
-  #define NUM_RUNOUT_SENSORS   2          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+  #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
   #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
@@ -1917,7 +1923,7 @@ Details:
 //#define AUTO_BED_LEVELING_LINEAR
 #define AUTO_BED_LEVELING_BILINEAR //**IMP-BLTouch
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+//#define MESH_BED_LEVELING //**IMP-BLTouch OFF
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1950,7 +1956,7 @@ Details:
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-#define DEBUG_LEVELING_FEATURE //**IMP-Debug info
+//#define DEBUG_LEVELING_FEATURE //**IMP-Debug info
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
@@ -1991,7 +1997,7 @@ Details:
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 4 // **IMP-BLTouch
+  #define GRID_MAX_POINTS_X 4 // **IMP-BLTouch 4
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -2059,18 +2065,18 @@ Details:
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4     // (mm) Z Range centered on Z_MIN_POS for LCD Z adjustment
-  //#define MESH_EDIT_MENU        // Add a menu to edit mesh points
+  #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LCD_BED_TRAMMING //**IMP-BLTouch
+#define LCD_BED_TRAMMING //**IMP-BLTouch
 
 #if ENABLED(LCD_BED_TRAMMING)
-  #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
-  //#define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
-  //#define BED_TRAMMING_USE_PROBE
+  #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
+  #define BED_TRAMMING_USE_PROBE
   #if ENABLED(BED_TRAMMING_USE_PROBE)
     #define BED_TRAMMING_PROBE_TOLERANCE 0.1  // (mm)
     #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
@@ -2334,17 +2340,17 @@ Details:
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
-  #define NOZZLE_CLEAN_STROKES  12
+  #define NOZZLE_CLEAN_STROKES  6
 
   // Default number of triangles
   #define NOZZLE_CLEAN_TRIANGLES  3
 
   // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
   // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  //#define NOZZLE_CLEAN_END_POINT   { { 100, 60, (Z_MIN_POS + 1) } } **IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
-  #define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) },{  280, 30, (Z_MIN_POS + 1) } }  //**IMP-fix SanityCheck on compile
+  //#define NOZZLE_CLEAN_END_POINT   { {  100, 60, (Z_MIN_POS + 1) },{  210, 60, (Z_MIN_POS + 1) } } //**IMP-fix SanityCheck on compile
+  #define NOZZLE_CLEAN_START_POINT { { -52.5, 30, (Z_MIN_POS + 1) }, { 369, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
+  #define NOZZLE_CLEAN_END_POINT   { { -42.5, 60, (Z_MIN_POS + 1) }, { 359, 30, (Z_MIN_POS + 1) } }  //**IMP-from Twinkie :-)
 
   // Circular pattern radius
   #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
@@ -2357,10 +2363,10 @@ Details:
   #define NOZZLE_CLEAN_GOBACK
 
   // For a purge/clean station that's always at the gantry height (thus no Z move)
-  //#define NOZZLE_CLEAN_NO_Z
+  #define NOZZLE_CLEAN_NO_Z //**IMP-Artist-D purge buckets
 
   // For a purge/clean station mounted on the X axis
-  //#define NOZZLE_CLEAN_NO_Y
+  #define NOZZLE_CLEAN_NO_Y  //**IMP-Artist-D purge buckets
 
   // Require a minimum hotend temperature for cleaning
   #define NOZZLE_CLEAN_MIN_TEMP 170

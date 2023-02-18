@@ -766,7 +766,7 @@
 #define DUAL_X_CARRIAGE
 #if ENABLED(DUAL_X_CARRIAGE)
   #define X1_MIN_POS X_MIN_POS    // Set to X_MIN_POS
-  #define X1_MAX_POS X_BED_SIZE -3   // A max coordinate so the X1 carriage can't hit the parked X2 carriage **IMP-H2
+  #define X1_MAX_POS X_BED_SIZE -5   // A max coordinate so the X1 carriage can't hit the parked X2 carriage **IMP-H2 -3
   #define X2_MIN_POS     3        // A min coordinate so the X2 carriage can't hit the parked X1 carriage
   #define X2_MAX_POS   368        // The max position of the X2 carriage, typically also the home position
   #define X2_HOME_DIR    1        // Set to 1. The X2 carriage always homes to the max endstop position
@@ -2067,7 +2067,7 @@
   #define LIN_ADVANCE_K 0.03    // Unit: mm compression per 1mm/s extruder speed **IMP-Tune Linear advance default here. 0.03 for H2 PLA/ABS
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
-  #define ALLOW_LOW_EJERK     // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
+  #define ALLOW_LOW_EJERK       // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
   //#define EXPERIMENTAL_I2S_LA // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
 #endif
 
