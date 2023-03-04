@@ -37,15 +37,16 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M211LR Imp v2023.02.18"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro JG M211LR Imp v2023.03.05"
 /**IMP-Build information *Updated Halloween Release*
 AUthor:     Imp67  
 Marlin:     2.1.2 Release
-Date:       2023-02-18
+Date:       2023-03-05
 Extruders:  JGMaker
 UART:       TMC2209_STANDALONE
 ABL:        BLTouch Zmax
-Details:    
+Details:
+03/05/23 - Modified BLTouch offsets to allow for more variation in mounts     
 */ 
 
 /**IMP-Begin JG changes
@@ -1527,7 +1528,8 @@ Details:
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 }    // **IMP-BLTouch JG
+//#define NOZZLE_TO_PROBE_OFFSET { 21, -40, -1.120 }    // **IMP-BLTouch JG
+#define NOZZLE_TO_PROBE_OFFSET { 20, -20, -1.120 }    // **IMP-BLTouch JG Jason Taylor
 //#define NOZZLE_TO_PROBE_OFFSET { -41, -28, -1.400 } // **IMP-BLTouch Biqu H2
 //#define NOZZLE_TO_PROBE_OFFSET { 0, 8, 0 } // **IMP-BLTouch OFF
 

@@ -2121,10 +2121,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT  10  //**IMP-BLTouch
-  #define PROBING_MARGIN_RIGHT 45  //**IMP-BLTouch
-  #define PROBING_MARGIN_FRONT 30  //**IMP-BLTouch
-  #define PROBING_MARGIN_BACK  10  //**IMP-BLTouch
+  //#define PROBING_MARGIN_LEFT  10  //**IMP-BLTouch custom based on expected offsets (commented out for compatibility with bigger probe offsets)
+  //#define PROBING_MARGIN_RIGHT 45  //**IMP-BLTouch custom based on expected offsets
+  //#define PROBING_MARGIN_FRONT 30  //**IMP-BLTouch custom based on expected offsets
+  //#define PROBING_MARGIN_BACK  10  //**IMP-BLTouch custom based on expected offsets
   //#define PROBING_MARGIN_LEFT PROBING_MARGIN
   //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
   //#define PROBING_MARGIN_FRONT PROBING_MARGIN
