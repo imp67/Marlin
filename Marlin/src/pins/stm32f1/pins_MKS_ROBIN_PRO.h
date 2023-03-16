@@ -104,6 +104,15 @@
 #ifndef E2_CS_PIN
   #define E2_CS_PIN                         PG9
 #endif
+
+//**IMP-Stop compile warning (from Twinkie)
+#define X2_ENABLE_PIN                        E2_ENABLE_PIN
+#define X2_STEP_PIN                          E2_STEP_PIN
+#define X2_DIR_PIN                           E2_DIR_PIN
+#ifndef X2_CS_PIN
+  #define X2_CS_PIN                          E2_CS_PIN
+#endif
+
 //
 // Software SPI pins for TMC2130 stepper drivers
 //

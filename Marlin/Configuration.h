@@ -37,10 +37,10 @@
  */
 #define CONFIGURATION_H_VERSION 02010200
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M212LR Imp v2022.10.31"
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M211LR Imp v2022.10.31"
 /**IMP-Build information *Halloween Release*
 AUthor:     Imp67  
-Marlin:     2.1.2 Release
+Marlin:     2.1.1 Release
 Date:       2022-10-31
 Extruders:  Biqu H2
 UART:       TMC2209_STANDALONE
@@ -1816,7 +1816,7 @@ Details:
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
-  #define NUM_RUNOUT_SENSORS   2          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+  #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
   #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
