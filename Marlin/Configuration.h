@@ -37,11 +37,11 @@
  */
 #define CONFIGURATION_H_VERSION 02010300
 
-#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF UART BLTzmax Imp v2023.04.23"
-/**IMP-Build information *ANZAC Day Build*
+#define ARTIST_D_PRO_VERSION "Version:Artist-D Pro BiquH2 M21xBF UART BLTzmax Imp v2023.05.06"
+/**IMP-Build information *ANZAC Day Build update*
 AUthor:     Imp67  
 Marlin:     2.1.x BugFix
-Date:       2023-04-23
+Date:       2023-05-06
 Extruders:  Biqu H2
 UART:       TMC2209
 ABL:        BLTouch Zmax
@@ -429,7 +429,7 @@ Details:
   //#define MKS_PWC                 // Using the MKS PWC add-on
   //#define PS_OFF_CONFIRM          // Confirm dialog when power off
   //#define PS_OFF_SOUND            // Beep 1s when power off
-  #define PSU_ACTIVE_STATE HIGH      // Set 'LOW' for ATX, 'HIGH' for X-Box
+  #define PSU_ACTIVE_STATE HIGH     // Set 'LOW' for ATX, 'HIGH' for X-Box
 
   //#define PSU_DEFAULT_OFF               // Keep power off until enabled directly with M80
   //#define PSU_POWERUP_DELAY      250    // (ms) Delay for the PSU to warm up to full power
@@ -678,7 +678,7 @@ Details:
 
 #if ENABLED(PIDTEMP)
   //#define PID_DEBUG             // Print PID debug data to the serial port. Use 'M303 D' to toggle activation.
-  #define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
+  #define PID_PARAMS_PER_HOTEND   // Use separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with G-code: M301 E[extruder number, 0-2]
 
   #if ENABLED(PID_PARAMS_PER_HOTEND)
@@ -1131,7 +1131,7 @@ Details:
 //#define USE_WMIN_PLUG
 #define USE_XMAX_PLUG
 #define USE_YMAX_PLUG
-#define USE_ZMAX_PLUG //**IMP-BLT Z-max
+//#define USE_ZMAX_PLUG //**IMP-BLT Z-max ??
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
 //#define USE_KMAX_PLUG
